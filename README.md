@@ -745,11 +745,11 @@ network-intrusion-detection/
 ```
 
 ## 23. Screenshots
-
+<img width="1650" height="865" alt="Screenshot 2026-09-08 111822" src="https://github.com/user-attachments/assets/400fc265-3395-422d-8eb7-545614e0228f" />
 <img width="1562" height="757" alt="Screenshot 2026-09-08 233256" src="https://github.com/user-attachments/assets/d290c245-342c-4015-bcfc-ce2d96a4476d" />
 <img width="1592" height="880" alt="Screenshot 2026-09-08 232717" src="https://github.com/user-attachments/assets/e5cc39e6-9fb1-4de6-b50c-b8d2126e6e78" />
 <img width="1597" height="798" alt="Screenshot 2026-09-08 232635" src="https://github.com/user-attachments/assets/8bda3b04-b07d-4ac5-9483-5f91a39c4194" />
-<img width="1650" height="865" alt="Screenshot 2026-09-08 111822" src="https://github.com/user-attachments/assets/400fc265-3395-422d-8eb7-545614e0228f" />
+
 
 
 ## Licence
