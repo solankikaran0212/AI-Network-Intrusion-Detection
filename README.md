@@ -756,11 +756,3 @@ network-intrusion-detection/
 
 MIT — see [LICENSE](LICENSE).
 
-## Acknowledgements
-
-CIC-IDS2017 was produced by the Canadian Institute for Cybersecurity, University
-of New Brunswick. If you use the dataset, cite their original paper:
-
-> I. Sharafaldin, A. H. Lashkari, A. A. Ghorbani. *Toward Generating a New
-> Intrusion Detection Dataset and Intrusion Traffic Characterization.* ICISSP,
-> 2018.
