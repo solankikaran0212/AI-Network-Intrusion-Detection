@@ -1,0 +1,65 @@
+# Two services from one image: the REST API and the Streamlit dashboard.
+#
+# They are separate containers rather than one container running both, because
+# they have genuinely different scaling and failure characteristics - the API
+# is the thing you would put behind a load balancer, the dashboard is a single
+# analyst-facing UI. Splitting them also means a dashboard crash cannot take
+# detection offline.
+#
+#   docker compose up --build
+#
+# Then: API docs at http://localhost:8000/docs, dashboard at http://localhost:8501
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: nids:latest
+    container_name: nids-api
+    command: uvicorn api.main:app --host 0.0.0.0 --port 8000
+    ports:
+      - "8000:8000"
+    environment:
+      NIDS_LOG_LEVEL: INFO
+      NIDS_MAX_UPLOAD_MB: "25"
+      NIDS_CORS_ORIGINS: "http://localhost:8501"
+    volumes:
+      # Models and data are mounted rather than baked in, so retraining on the
+      # host is picked up by a container restart without a rebuild.
+      - ./models:/app/models
+      - ./data:/app/data
+      - ./reports:/app/reports
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+    restart: unless-stopped
+
+  dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: nids:latest
+    container_name: nids-dashboard
+    command: >
+      streamlit run dashboard/app.py
+      --server.port=8501
+      --server.address=0.0.0.0
+      --server.headless=true
+      --browser.gatherUsageStats=false
+    ports:
+      - "8501:8501"
+    environment:
+      NIDS_API_URL: "http://api:8000"
+      NIDS_LOG_LEVEL: INFO
+    volumes:
+      - ./models:/app/models
+      - ./data:/app/data
+      - ./reports:/app/reports
+    depends_on:
+      api:
+        condition: service_started
+    restart: unless-stopped

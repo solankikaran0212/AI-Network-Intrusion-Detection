@@ -1,0 +1,29 @@
+{
+  "source": "synthetic_sample",
+  "rows_in": 20200,
+  "rows_out": 20000,
+  "duplicates_removed": 200,
+  "null_label_rows_removed": 0,
+  "infinite_values_replaced": 206,
+  "columns_dropped": {
+    "leakage": [
+      "timestamp",
+      "source_ip",
+      "destination_ip"
+    ],
+    "all_nan": [],
+    "constant": []
+  },
+  "rare_classes_dropped": {},
+  "class_counts": {
+    "BENIGN": 11000,
+    "PortScan": 2000,
+    "DDoS": 2000,
+    "DoS": 2000,
+    "BruteForce": 1200,
+    "WebAttack": 800,
+    "Botnet": 600,
+    "Infiltration": 400
+  },
+  "output_path": "/home/claude/build/nids/data/processed/dataset.parquet"
+}

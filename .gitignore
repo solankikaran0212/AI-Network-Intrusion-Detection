@@ -1,0 +1,55 @@
+# ---- Datasets ---------------------------------------------------------------
+# CIC-IDS2017 is ~500 MB of CSV. It is never committed; see README > Dataset
+# Setup for where to place it. The small synthetic sample IS committed so the
+# project is runnable immediately after clone.
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!data/sample/
+!data/sample/*.csv
+
+# ---- Trained artifacts ------------------------------------------------------
+# Models are build outputs, reproducible from the pipeline. Committing binary
+# joblib files bloats history and invites version-skew bugs.
+models/*
+!models/.gitkeep
+*.joblib
+*.pkl
+
+# ---- Generated reports and logs ---------------------------------------------
+reports/*
+!reports/.gitkeep
+logs/*
+!logs/.gitkeep
+*.log
+
+# ---- Secrets ----------------------------------------------------------------
+.env
+*.pem
+*.key
+
+# ---- Python -----------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+env/
+
+# ---- Tooling ----------------------------------------------------------------
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.ipynb_checkpoints/
+
+# ---- Editors / OS -----------------------------------------------------------
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

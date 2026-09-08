@@ -1,0 +1,767 @@
+{
+  "generated_at": "2026-09-06T21:15:21+00:00",
+  "selected_model": "XGBoost",
+  "selection_metric": "macro_f1",
+  "selection_split": "validation",
+  "dataset": {
+    "total_rows": 20000,
+    "train_rows": 12800,
+    "validation_rows": 3200,
+    "test_rows": 4000,
+    "classes": [
+      "BENIGN",
+      "Botnet",
+      "BruteForce",
+      "DDoS",
+      "DoS",
+      "Infiltration",
+      "PortScan",
+      "WebAttack"
+    ],
+    "class_distribution": {
+      "BENIGN": 11000,
+      "PortScan": 2000,
+      "DDoS": 2000,
+      "DoS": 2000,
+      "BruteForce": 1200,
+      "WebAttack": 800,
+      "Botnet": 600,
+      "Infiltration": 400
+    }
+  },
+  "features": {
+    "raw_count": 29,
+    "raw_columns": [
+      "destination_port",
+      "protocol",
+      "flow_duration",
+      "total_fwd_packets",
+      "total_backward_packets",
+      "total_length_of_fwd_packets",
+      "total_length_of_bwd_packets",
+      "fwd_packet_length_mean",
+      "fwd_packet_length_std",
+      "bwd_packet_length_mean",
+      "bwd_packet_length_std",
+      "flow_bytes_s",
+      "flow_packets_s",
+      "flow_iat_mean",
+      "flow_iat_std",
+      "min_packet_length",
+      "max_packet_length",
+      "packet_length_mean",
+      "packet_length_std",
+      "syn_flag_count",
+      "ack_flag_count",
+      "fin_flag_count",
+      "psh_flag_count",
+      "rst_flag_count",
+      "urg_flag_count",
+      "down_up_ratio",
+      "average_packet_size",
+      "init_win_bytes_forward",
+      "init_win_bytes_backward"
+    ],
+    "transformed_count": 52
+  },
+  "training_seconds": {
+    "LogisticRegression": 13.03,
+    "RandomForest": 5.77,
+    "XGBoost": 4.76
+  },
+  "cross_validation": {},
+  "validation_results": [
+    {
+      "model_name": "LogisticRegression",
+      "split": "validation",
+      "accuracy": 0.9409375,
+      "balanced_accuracy": 0.9630326704545453,
+      "macro_precision": 0.8814459702982207,
+      "macro_recall": 0.9630326704545453,
+      "macro_f1": 0.9142288982069238,
+      "weighted_precision": 0.955065563824856,
+      "weighted_recall": 0.9409375,
+      "weighted_f1": 0.9446592700062909,
+      "roc_auc_ovr": 0.9979738534160632,
+      "per_class": {
+        "BENIGN": {
+          "precision": 0.9888544891640867,
+          "recall": 0.9073863636363636,
+          "f1": 0.9463703703703704,
+          "support": 1760
+        },
+        "Botnet": {
+          "precision": 0.656934306569343,
+          "recall": 0.9375,
+          "f1": 0.7725321888412017,
+          "support": 96
+        },
+        "BruteForce": {
+          "precision": 0.8458149779735683,
+          "recall": 1.0,
+          "f1": 0.9164677804295943,
+          "support": 192
+        },
+        "DDoS": {
+          "precision": 1.0,
+          "recall": 0.99375,
+          "f1": 0.9968652037617555,
+          "support": 320
+        },
+        "DoS": {
+          "precision": 0.996875,
+          "recall": 0.996875,
+          "f1": 0.996875,
+          "support": 320
+        },
+        "Infiltration": {
+          "precision": 1.0,
+          "recall": 0.984375,
+          "f1": 0.9921259842519685,
+          "support": 64
+        },
+        "PortScan": {
+          "precision": 0.9754601226993865,
+          "recall": 0.99375,
+          "f1": 0.9845201238390093,
+          "support": 320
+        },
+        "WebAttack": {
+          "precision": 0.5876288659793815,
+          "recall": 0.890625,
+          "f1": 0.7080745341614907,
+          "support": 128
+        }
+      },
+      "confusion_matrix": [
+        [
+          1597,
+          46,
+          31,
+          0,
+          1,
+          0,
+          5,
+          80
+        ],
+        [
+          4,
+          90,
+          0,
+          0,
+          0,
+          0,
+          2,
+          0
+        ],
+        [
+          0,
+          0,
+          192,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          318,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          319,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          63,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          2,
+          0,
+          0,
+          0,
+          318,
+          0
+        ],
+        [
+          12,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          114
+        ]
+      ],
+      "labels": [
+        "BENIGN",
+        "Botnet",
+        "BruteForce",
+        "DDoS",
+        "DoS",
+        "Infiltration",
+        "PortScan",
+        "WebAttack"
+      ],
+      "attack_detection_rate": 0.9875,
+      "false_alarm_rate": 0.09261363636363637,
+      "false_negatives": 18,
+      "false_positives": 163,
+      "true_positives": 1422,
+      "true_negatives": 1597
+    },
+    {
+      "model_name": "RandomForest",
+      "split": "validation",
+      "accuracy": 0.9778125,
+      "balanced_accuracy": 0.9516157670454546,
+      "macro_precision": 0.9733277754622653,
+      "macro_recall": 0.9516157670454546,
+      "macro_f1": 0.9611442676145256,
+      "weighted_precision": 0.9774647320846218,
+      "weighted_recall": 0.9778125,
+      "weighted_f1": 0.9771883205859224,
+      "roc_auc_ovr": 0.9988320436339704,
+      "per_class": {
+        "BENIGN": {
+          "precision": 0.9736399326977005,
+          "recall": 0.9863636363636363,
+          "f1": 0.9799604854642958,
+          "support": 1760
+        },
+        "Botnet": {
+          "precision": 0.9456521739130435,
+          "recall": 0.90625,
+          "f1": 0.925531914893617,
+          "support": 96
+        },
+        "BruteForce": {
+          "precision": 0.945,
+          "recall": 0.984375,
+          "f1": 0.9642857142857143,
+          "support": 192
+        },
+        "DDoS": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 320
+        },
+        "DoS": {
+          "precision": 1.0,
+          "recall": 0.99375,
+          "f1": 0.9968652037617555,
+          "support": 320
+        },
+        "Infiltration": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 64
+        },
+        "PortScan": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 320
+        },
+        "WebAttack": {
+          "precision": 0.9223300970873787,
+          "recall": 0.7421875,
+          "f1": 0.8225108225108225,
+          "support": 128
+        }
+      },
+      "confusion_matrix": [
+        [
+          1736,
+          5,
+          11,
+          0,
+          0,
+          0,
+          0,
+          8
+        ],
+        [
+          9,
+          87,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          3,
+          0,
+          189,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          320,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          0,
+          0,
+          318,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          64,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          320,
+          0
+        ],
+        [
+          33,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          95
+        ]
+      ],
+      "labels": [
+        "BENIGN",
+        "Botnet",
+        "BruteForce",
+        "DDoS",
+        "DoS",
+        "Infiltration",
+        "PortScan",
+        "WebAttack"
+      ],
+      "attack_detection_rate": 0.9673611111111111,
+      "false_alarm_rate": 0.013636363636363636,
+      "false_negatives": 47,
+      "false_positives": 24,
+      "true_positives": 1393,
+      "true_negatives": 1736
+    },
+    {
+      "model_name": "XGBoost",
+      "split": "validation",
+      "accuracy": 0.985,
+      "balanced_accuracy": 0.9788056344696969,
+      "macro_precision": 0.9715358549023292,
+      "macro_recall": 0.9788056344696969,
+      "macro_f1": 0.97485208490634,
+      "weighted_precision": 0.9850347664292544,
+      "weighted_recall": 0.985,
+      "weighted_f1": 0.9849219218700271,
+      "roc_auc_ovr": 0.9992766950251224,
+      "per_class": {
+        "BENIGN": {
+          "precision": 0.9885844748858448,
+          "recall": 0.9840909090909091,
+          "f1": 0.9863325740318907,
+          "support": 1760
+        },
+        "Botnet": {
+          "precision": 0.9230769230769231,
+          "recall": 1.0,
+          "f1": 0.96,
+          "support": 96
+        },
+        "BruteForce": {
+          "precision": 0.9597989949748744,
+          "recall": 0.9947916666666666,
+          "f1": 0.9769820971867008,
+          "support": 192
+        },
+        "DDoS": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 320
+        },
+        "DoS": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 320
+        },
+        "Infiltration": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 64
+        },
+        "PortScan": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 320
+        },
+        "WebAttack": {
+          "precision": 0.9008264462809917,
+          "recall": 0.8515625,
+          "f1": 0.8755020080321285,
+          "support": 128
+        }
+      },
+      "confusion_matrix": [
+        [
+          1732,
+          8,
+          8,
+          0,
+          0,
+          0,
+          0,
+          12
+        ],
+        [
+          0,
+          96,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          191,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          320,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          320,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          64,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          320,
+          0
+        ],
+        [
+          19,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          109
+        ]
+      ],
+      "labels": [
+        "BENIGN",
+        "Botnet",
+        "BruteForce",
+        "DDoS",
+        "DoS",
+        "Infiltration",
+        "PortScan",
+        "WebAttack"
+      ],
+      "attack_detection_rate": 0.9861111111111112,
+      "false_alarm_rate": 0.015909090909090907,
+      "false_negatives": 20,
+      "false_positives": 28,
+      "true_positives": 1420,
+      "true_negatives": 1732
+    }
+  ],
+  "test_result": {
+    "model_name": "XGBoost",
+    "split": "test",
+    "accuracy": 0.986,
+    "balanced_accuracy": 0.9768939393939394,
+    "macro_precision": 0.9765831861082952,
+    "macro_recall": 0.9768939393939394,
+    "macro_f1": 0.9766935220113462,
+    "weighted_precision": 0.9859433955492511,
+    "weighted_recall": 0.986,
+    "weighted_f1": 0.9859559366315609,
+    "roc_auc_ovr": 0.9994608275023265,
+    "per_class": {
+      "BENIGN": {
+        "precision": 0.9881656804733728,
+        "recall": 0.9868181818181818,
+        "f1": 0.9874914714578121,
+        "support": 2200
+      },
+      "Botnet": {
+        "precision": 0.9590163934426229,
+        "recall": 0.975,
+        "f1": 0.9669421487603306,
+        "support": 120
+      },
+      "BruteForce": {
+        "precision": 0.9755102040816327,
+        "recall": 0.9958333333333333,
+        "f1": 0.9855670103092784,
+        "support": 240
+      },
+      "DDoS": {
+        "precision": 1.0,
+        "recall": 0.9975,
+        "f1": 0.9987484355444305,
+        "support": 400
+      },
+      "DoS": {
+        "precision": 0.9925373134328358,
+        "recall": 0.9975,
+        "f1": 0.9950124688279302,
+        "support": 400
+      },
+      "Infiltration": {
+        "precision": 1.0,
+        "recall": 0.9875,
+        "f1": 0.9937106918238994,
+        "support": 80
+      },
+      "PortScan": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 400
+      },
+      "WebAttack": {
+        "precision": 0.8974358974358975,
+        "recall": 0.875,
+        "f1": 0.8860759493670886,
+        "support": 160
+      }
+    },
+    "confusion_matrix": [
+      [
+        2171,
+        5,
+        6,
+        0,
+        3,
+        0,
+        0,
+        15
+      ],
+      [
+        2,
+        117,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      [
+        1,
+        0,
+        239,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        0,
+        399,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        0,
+        0,
+        399,
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        0,
+        0,
+        0,
+        79,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        400,
+        0
+      ],
+      [
+        20,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        140
+      ]
+    ],
+    "labels": [
+      "BENIGN",
+      "Botnet",
+      "BruteForce",
+      "DDoS",
+      "DoS",
+      "Infiltration",
+      "PortScan",
+      "WebAttack"
+    ],
+    "attack_detection_rate": 0.9855555555555555,
+    "false_alarm_rate": 0.013181818181818182,
+    "false_negatives": 26,
+    "false_positives": 29,
+    "true_positives": 1774,
+    "true_negatives": 2171
+  },
+  "comparison_table": [
+    {
+      "Model": "XGBoost",
+      "Accuracy": 0.985,
+      "Balanced Acc": 0.9788,
+      "Macro Precision": 0.9715,
+      "Macro Recall": 0.9788,
+      "Macro F1": 0.9749,
+      "Weighted F1": 0.9849,
+      "ROC-AUC (OvR)": 0.9993,
+      "Detection Rate": 0.9861,
+      "False Alarm Rate": 0.0159,
+      "False Negatives": 20
+    },
+    {
+      "Model": "RandomForest",
+      "Accuracy": 0.9778,
+      "Balanced Acc": 0.9516,
+      "Macro Precision": 0.9733,
+      "Macro Recall": 0.9516,
+      "Macro F1": 0.9611,
+      "Weighted F1": 0.9772,
+      "ROC-AUC (OvR)": 0.9988,
+      "Detection Rate": 0.9674,
+      "False Alarm Rate": 0.0136,
+      "False Negatives": 47
+    },
+    {
+      "Model": "LogisticRegression",
+      "Accuracy": 0.9409,
+      "Balanced Acc": 0.963,
+      "Macro Precision": 0.8814,
+      "Macro Recall": 0.963,
+      "Macro F1": 0.9142,
+      "Weighted F1": 0.9447,
+      "ROC-AUC (OvR)": 0.998,
+      "Detection Rate": 0.9875,
+      "False Alarm Rate": 0.0926,
+      "False Negatives": 18
+    }
+  ],
+  "total_runtime_seconds": 24.48,
+  "anomaly_detector": {
+    "contamination": 0.05,
+    "threshold": -0.5264338156127394,
+    "trained_on_rows": 7040,
+    "feature_count": 29
+  }
+}
